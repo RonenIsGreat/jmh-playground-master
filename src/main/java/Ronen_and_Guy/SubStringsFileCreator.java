@@ -1,8 +1,8 @@
 package Ronen_and_Guy;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Random;
 
 // Implement a string alignment algorithm: you are given a large reference string (10s-100s of millions of characters) named X,
@@ -13,32 +13,51 @@ import java.util.Random;
 
 public class SubStringsFileCreator {
     public static final String CreatedFileName = "SubStringsFile.txt";
-    private static final String gaintTextFile = GiantTextFileCreator.CreatedFileName;
+    private static final int subStringLength = 100;
 
     public static void main(String... args) {
         try {
             long start = System.currentTimeMillis();
-            Random random = new Random();
-            File textFile = new File(gaintTextFile);
-            final long charactersNumber = textFile.length();
-            final long minCharacterNumber = charactersNumber/10;
-            final int charactersNumberRange = (int)(charactersNumber - minCharacterNumber);
-            final long numberOfSubStrings = random.nextInt(charactersNumberRange) + minCharacterNumber;
 
-            // TODO: read and select sub strings
+            // Read the giant file
+            char[] longString = GiantTextFileCreator.ReadLongStringFromFile();
 
+            // Get the sub-strings
+            char[][] subStrings = CreateRandomSubStrings(longString);
+
+            // Write sub-strings to file
             File subStringsFile = new File(CreatedFileName);
             subStringsFile.createNewFile();
-            FileWriter writer = new FileWriter(subStringsFile);
-
-            // TODO: write sub strings to file
-
+            BufferedWriter  writer = new BufferedWriter(new FileWriter(subStringsFile));
+            for (char[] subString : subStrings) {
+                writer.write(subString);
+                writer.newLine();
+            }
             writer.flush();
             writer.close();
+
             long end = System.currentTimeMillis();
             System.out.println((end - start) / 1000f + " seconds");
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static char[][] CreateRandomSubStrings(char[] longString){
+        Random random = new Random();
+        final int charactersNumber = longString.length;
+        final int minCharacterNumber = charactersNumber/10;
+        final int charactersNumberRange = (charactersNumber - minCharacterNumber);
+        final int numberOfSubStrings = random.nextInt(charactersNumberRange) + minCharacterNumber;
+        final int maxIndexOfPossibleSubString = charactersNumber - subStringLength;
+        char[][] subStrings = new char[numberOfSubStrings][];
+
+        for (int i=0; i<subStrings.length; i++){
+            int indexOfSubString = random.nextInt(maxIndexOfPossibleSubString);
+            char[] subString = Arrays.copyOfRange(longString, indexOfSubString, indexOfSubString + subStringLength);
+            subStrings[i] = subString;
+        }
+
+        return subStrings;
     }
 }

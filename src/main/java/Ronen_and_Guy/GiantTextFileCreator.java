@@ -1,9 +1,6 @@
 package Ronen_and_Guy;
 
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Random;
 
 // Implement a string alignment algorithm: you are given a large reference string (10s-100s of millions of characters) named X,
@@ -14,33 +11,53 @@ import java.util.Random;
 
 public class GiantTextFileCreator {
     public static final String CreatedFileName = "GiantFile.txt";
-    private static final int minCharacersNumber = 10000000;
-    private static final int maxCharacersNumber = 100000000;
+    private static final int minCharactersNumber = 10000000;
+    private static final int maxCharactersNumber = 100000000;
 
     public static void main(String... args) {
         try {
             long start = System.currentTimeMillis();
-            Random random = new Random();
-            final int charactersNumberRange = maxCharacersNumber - minCharacersNumber;
-            final int charectersNumber = random.nextInt(charactersNumberRange) + minCharacersNumber;
-            char[] characters = new char[charectersNumber];
 
-            for (int i = 0; i < charectersNumber; i++) {
-                // a-z letters
-                char c = (char)(random.nextInt(26) + 'a');
-                characters[i] = c;
-            }
+            // The long string
+            char[] characters = CreateRandomLongString();
 
+            // Write the long string to file
             File file = new File(CreatedFileName);
             file.createNewFile();
             FileWriter writer = new FileWriter(file);
             writer.write(characters);
             writer.flush();
             writer.close();
+
             long end = System.currentTimeMillis();
             System.out.println((end - start) / 1000f + " seconds");
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static char[] CreateRandomLongString(){
+        Random random = new Random();
+        final int charactersNumberRange = maxCharactersNumber - minCharactersNumber;
+        final int charactersNumber = random.nextInt(charactersNumberRange) + minCharactersNumber;
+        char[] characters = new char[charactersNumber];
+
+        for (int i = 0; i < charactersNumber; i++) {
+            // a-z letters
+            char c = (char)(random.nextInt(26) + 'a');
+            characters[i] = c;
+        }
+
+        return characters;
+    }
+
+    public static char[] ReadLongStringFromFile() throws IOException {
+        File textFile = new File(CreatedFileName);
+        FileReader fileReader = new FileReader(textFile);
+        int fileSize = (int) textFile.length();
+        char[] longString = new char[fileSize];
+        fileReader.read(longString);
+        fileReader.close();
+        return longString;
     }
 }
