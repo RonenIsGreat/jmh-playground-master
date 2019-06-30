@@ -15,6 +15,10 @@ public class GiantTextFileCreator {
     private static final int maxCharactersNumber = 100000000;
 
     public static void main(String... args) {
+        createFile();
+    }
+
+    public static void createFile(){
         try {
             long start = System.currentTimeMillis();
 
@@ -51,13 +55,29 @@ public class GiantTextFileCreator {
         return characters;
     }
 
-    public static char[] readLongStringFromFile() throws IOException {
-        File textFile = new File(CreatedFileName);
-        FileReader fileReader = new FileReader(textFile);
-        int fileSize = (int) textFile.length();
-        char[] longString = new char[fileSize];
-        fileReader.read(longString);
-        fileReader.close();
-        return longString;
+    public static char[] getLongStringFromFile() {
+        try {
+
+            File textFile = new File(CreatedFileName);
+            FileReader fileReader = null;
+
+            // open file reader if file exist, else create file and then open reader
+            try {
+                fileReader = new FileReader(textFile);
+            } catch (FileNotFoundException e) {
+                createFile();
+                fileReader = new FileReader(textFile);
+            }
+
+
+            int fileSize = (int) textFile.length();
+            char[] longString = new char[fileSize];
+                fileReader.read(longString);
+
+            fileReader.close();
+            return longString;
+        } catch (IOException e) {
+            return null;
+        }
     }
 }

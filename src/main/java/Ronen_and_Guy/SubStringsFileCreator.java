@@ -16,11 +16,15 @@ public class SubStringsFileCreator {
     private static final int subStringLength = 100;
 
     public static void main(String... args) {
+        createFile();
+    }
+
+    public static void createFile(){
         try {
             long start = System.currentTimeMillis();
 
             // Read the giant file
-            char[] longString = GiantTextFileCreator.readLongStringFromFile();
+            char[] longString = GiantTextFileCreator.getLongStringFromFile();
 
             // declare the number of sub strings
             Random random = new Random();
@@ -63,8 +67,17 @@ public class SubStringsFileCreator {
         BufferedReader br;
         boolean hasNext = true;
 
-        public SubStringsIterator() throws FileNotFoundException {
-            br = new BufferedReader(new FileReader(CreatedFileName));
+        public SubStringsIterator() {
+            try {
+                br = new BufferedReader(new FileReader(CreatedFileName));
+            } catch (FileNotFoundException e) {
+                createFile();
+                try {
+                    br = new BufferedReader(new FileReader(CreatedFileName));
+                } catch (FileNotFoundException ex) {
+                    ex.printStackTrace();
+                }
+            }
         }
 
         @Override
