@@ -19,7 +19,7 @@ public class GiantTextFileCreator {
             long start = System.currentTimeMillis();
 
             // The long string
-            char[] characters = CreateRandomLongString();
+            char[] characters = createRandomLongString();
 
             // Write the long string to file
             File file = new File(CreatedFileName);
@@ -36,7 +36,7 @@ public class GiantTextFileCreator {
         }
     }
 
-    public static char[] CreateRandomLongString(){
+    public static char[] createRandomLongString(){
         Random random = new Random();
         final int charactersNumberRange = maxCharactersNumber - minCharactersNumber;
         final int charactersNumber = random.nextInt(charactersNumberRange) + minCharactersNumber;
@@ -51,7 +51,7 @@ public class GiantTextFileCreator {
         return characters;
     }
 
-    public static char[] ReadLongStringFromFile() throws IOException {
+    public static char[] readLongStringFromFile() throws IOException {
         File textFile = new File(CreatedFileName);
         FileReader fileReader = new FileReader(textFile);
         int fileSize = (int) textFile.length();

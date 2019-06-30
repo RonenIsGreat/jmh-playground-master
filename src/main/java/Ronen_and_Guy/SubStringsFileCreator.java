@@ -1,8 +1,8 @@
 package Ronen_and_Guy;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.Random;
 
 // Implement a string alignment algorithm: you are given a large reference string (10s-100s of millions of characters) named X,
@@ -20,19 +20,26 @@ public class SubStringsFileCreator {
             long start = System.currentTimeMillis();
 
             // Read the giant file
-            char[] longString = GiantTextFileCreator.ReadLongStringFromFile();
+            char[] longString = GiantTextFileCreator.readLongStringFromFile();
 
-            // Get the sub-strings
-            char[][] subStrings = CreateRandomSubStrings(longString);
+            // declare the number of sub strings
+            Random random = new Random();
+            final int charactersNumber = longString.length;
+            final int minCharacterNumber = charactersNumber/10;
+            final int charactersNumberRange = (charactersNumber - minCharacterNumber);
+            final int numberOfSubStrings = random.nextInt(charactersNumberRange) + minCharacterNumber;
 
             // Write sub-strings to file
             File subStringsFile = new File(CreatedFileName);
             subStringsFile.createNewFile();
             BufferedWriter  writer = new BufferedWriter(new FileWriter(subStringsFile));
-            for (char[] subString : subStrings) {
+
+            for (int i=0; i<numberOfSubStrings; i++) {
+                char[] subString = getRandomSubString(longString);
                 writer.write(subString);
                 writer.newLine();
             }
+
             writer.flush();
             writer.close();
 
@@ -43,21 +50,42 @@ public class SubStringsFileCreator {
         }
     }
 
-    public static char[][] CreateRandomSubStrings(char[] longString){
+    private static char[] getRandomSubString(char[] longString){
         Random random = new Random();
         final int charactersNumber = longString.length;
-        final int minCharacterNumber = charactersNumber/10;
-        final int charactersNumberRange = (charactersNumber - minCharacterNumber);
-        final int numberOfSubStrings = random.nextInt(charactersNumberRange) + minCharacterNumber;
         final int maxIndexOfPossibleSubString = charactersNumber - subStringLength;
-        char[][] subStrings = new char[numberOfSubStrings][];
+        int indexOfSubString = random.nextInt(maxIndexOfPossibleSubString);
+        char[] subString = Arrays.copyOfRange(longString, indexOfSubString, indexOfSubString + subStringLength);
+        return subString;
+    }
 
-        for (int i=0; i<subStrings.length; i++){
-            int indexOfSubString = random.nextInt(maxIndexOfPossibleSubString);
-            char[] subString = Arrays.copyOfRange(longString, indexOfSubString, indexOfSubString + subStringLength);
-            subStrings[i] = subString;
+    public static class SubStringsIterator implements Iterator{
+        BufferedReader br;
+        boolean hasNext = true;
+
+        public SubStringsIterator() throws FileNotFoundException {
+            br = new BufferedReader(new FileReader(CreatedFileName));
         }
 
-        return subStrings;
+        @Override
+        public boolean hasNext() {
+            return hasNext;
+        }
+
+        @Override
+        public char[] next() {
+            try{
+                String line = br.readLine();
+
+                if(line == null){
+                    hasNext = false;
+                    return null;
+                }else{
+                    return line.toCharArray();
+                }
+            } catch (Exception e) {
+                return null;
+            }
+        }
     }
 }
