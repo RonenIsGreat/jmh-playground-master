@@ -2,11 +2,12 @@ package Ronen_and_Guy;
 
 import org.openjdk.jmh.annotations.*;
 
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 @State(Scope.Benchmark)
-@BenchmarkMode(Mode.Throughput)
-@OutputTimeUnit(TimeUnit.MICROSECONDS)
+@BenchmarkMode(Mode.SampleTime)
+@OutputTimeUnit(TimeUnit.SECONDS)
 public class SubStringsFinderBenchmark {
 
     char[] longString;
@@ -18,12 +19,34 @@ public class SubStringsFinderBenchmark {
         iterator = new SubStringsFileCreator.SubStringsIterator();
     }
 
-    @Benchmark
-    public void algorithm1Benchmark() {
+    // this takes a lot of time...
+    //@Benchmark
+    public void NaiveAlgorithmBenchmark() {
         char[] subString;
 
         while ((subString = iterator.next()) != null){
-            // TODO: write naive algorithm
+            for (int i = 0; i < this.longString.length - subString.length; i++){
+                char[] checkedPartOfLongString = Arrays.copyOfRange(this.longString, i, i + subString.length);
+                if(Arrays.equals(checkedPartOfLongString, subString)){
+                    // found the index of substring, at 'i'
+                    break;
+                }
+            }
+        }
+    }
+
+    @Benchmark
+    public void JavaAlgorithmBenchmark() {
+        String myLongString = new String(this.longString);
+        char[] subString;
+
+        while ((subString = this.iterator.next()) != null){
+            String mySubString = new String(subString);
+            int i = myLongString.indexOf(mySubString);
+
+            if(i >= 0){
+                // found the index of substring, at 'i'
+            }
         }
     }
 

@@ -29,9 +29,10 @@ public class SubStringsFileCreator {
             // declare the number of sub strings
             Random random = new Random();
             final int charactersNumber = longString.length;
-            final int minCharacterNumber = charactersNumber/10;
-            final int charactersNumberRange = (charactersNumber - minCharacterNumber);
-            final int numberOfSubStrings = random.nextInt(charactersNumberRange) + minCharacterNumber;
+            //final int minCharacterNumber = charactersNumber/10;
+            //final int charactersNumberRange = (charactersNumber - minCharacterNumber);
+            //final int numberOfSubStrings = random.nextInt(charactersNumberRange) + minCharacterNumber;
+            final int numberOfSubStrings = 1000;
 
             // Write sub-strings to file
             File subStringsFile = new File(CreatedFileName);
