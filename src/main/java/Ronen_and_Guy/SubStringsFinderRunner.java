@@ -11,9 +11,10 @@ public class SubStringsFinderRunner {
 
     public static void main(String... args) throws RunnerException {
         Options opts = new OptionsBuilder()
-                .warmupIterations(2)
+                .warmupIterations(3)
                 .measurementIterations(3)
                 .forks(2)
+                .timeout(TimeValue.minutes(20))
                 .jvmArgs("-Xms2g", "-Xmx2g", "-Xmn800m", "-server")
                 .include(SubStringsFinderBenchmark.class.getSimpleName())
                 .build();

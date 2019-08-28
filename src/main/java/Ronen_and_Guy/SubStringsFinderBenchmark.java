@@ -51,8 +51,16 @@ public class SubStringsFinderBenchmark {
     }
 
     @Benchmark
-    public void algorithm2Benchmark() {
-        // TODO: write better algorithm
+    public void RabinKarpAlgorithmBenchmark() {
+        char[] subString;
+
+        while ((subString = iterator.next()) != null){
+            int i = Rabin_Karp.indexOf(this.longString, subString);
+
+            if(i >= 0){
+                // found the index of substring, at 'i'
+            }
+        }
     }
 
     @Benchmark
