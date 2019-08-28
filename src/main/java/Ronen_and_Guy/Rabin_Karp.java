@@ -69,7 +69,7 @@ public class Rabin_Karp {
         return -1;
     }
 
-    public static int indexOf(char[] text, char[] pattern)
+    public static int findIndexOf(char[] text, char[] pattern)
     {
         String txt = new String(text);
         String pat = new String(pattern);

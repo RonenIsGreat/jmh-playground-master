@@ -25,12 +25,10 @@ public class SubStringsFinderBenchmark {
         char[] subString;
 
         while ((subString = iterator.next()) != null){
-            for (int i = 0; i < this.longString.length - subString.length; i++){
-                char[] checkedPartOfLongString = Arrays.copyOfRange(this.longString, i, i + subString.length);
-                if(Arrays.equals(checkedPartOfLongString, subString)){
-                    // found the index of substring, at 'i'
-                    break;
-                }
+            int i = NaiveSearch.findIndexOf(this.longString, subString);
+
+            if(i >= 0){
+                // found the index of substring, at 'i'
             }
         }
     }
@@ -55,7 +53,7 @@ public class SubStringsFinderBenchmark {
         char[] subString;
 
         while ((subString = iterator.next()) != null){
-            int i = Rabin_Karp.indexOf(this.longString, subString);
+            int i = Rabin_Karp.findIndexOf(this.longString, subString);
 
             if(i >= 0){
                 // found the index of substring, at 'i'
