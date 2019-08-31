@@ -27,8 +27,6 @@ public class SubStringsFileCreator {
             char[] longString = GiantTextFileCreator.getLongStringFromFile();
 
             // declare the number of sub strings
-            Random random = new Random();
-            final int charactersNumber = longString.length;
             //final int minCharacterNumber = charactersNumber/10;
             //final int charactersNumberRange = (charactersNumber - minCharacterNumber);
             //final int numberOfSubStrings = random.nextInt(charactersNumberRange) + minCharacterNumber;

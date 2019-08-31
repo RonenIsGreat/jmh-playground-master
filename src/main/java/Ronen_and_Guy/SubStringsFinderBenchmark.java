@@ -2,21 +2,24 @@ package Ronen_and_Guy;
 
 import org.openjdk.jmh.annotations.*;
 
-import java.util.Arrays;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 @State(Scope.Benchmark)
-@BenchmarkMode(Mode.SampleTime)
+@BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.SECONDS)
 public class SubStringsFinderBenchmark {
 
     char[] longString;
     SubStringsFileCreator.SubStringsIterator iterator;
+    ExecutorService pool;
 
     @Setup(Level.Iteration)
     public void setup() {
         longString = GiantTextFileCreator.getLongStringFromFile();
         iterator = new SubStringsFileCreator.SubStringsIterator();
+        pool = Executors.newCachedThreadPool();
     }
 
     // this takes a lot of time...
@@ -49,6 +52,33 @@ public class SubStringsFinderBenchmark {
     }
 
     @Benchmark
+    public void JavaWithThreadsAlgorithmBenchmark() {
+        String myLongString = new String(this.longString);
+        char[] subString;
+
+        while ((subString = this.iterator.next()) != null){
+            final char[] threadSubString = subString;
+
+            pool.execute(()->{
+                String mySubString = new String(threadSubString);
+                int i = myLongString.indexOf(mySubString);
+
+                if(i >= 0){
+                    // found the index of substring, at 'i'
+                }
+            });
+        }
+
+        // Wait for tasks to finish
+        pool.shutdown();
+        try {
+            pool.awaitTermination(10, TimeUnit.MINUTES);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //@Benchmark
     public void RabinKarpAlgorithmBenchmark() {
         char[] subString;
 
@@ -59,10 +89,5 @@ public class SubStringsFinderBenchmark {
                 // found the index of substring, at 'i'
             }
         }
-    }
-
-    @Benchmark
-    public void algorithm3Benchmark() {
-        // TODO: write better algorithm
     }
 }

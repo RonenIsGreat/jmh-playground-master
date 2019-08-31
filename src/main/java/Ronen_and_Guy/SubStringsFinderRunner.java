@@ -13,7 +13,7 @@ public class SubStringsFinderRunner {
 
     public static void main(String... args) throws RunnerException {
         Options opts = new OptionsBuilder()
-                .warmupIterations(10)
+                .warmupIterations(5)
                 .measurementIterations(10)
                 .forks(1)
                 .addProfiler(GCProfiler.class)
