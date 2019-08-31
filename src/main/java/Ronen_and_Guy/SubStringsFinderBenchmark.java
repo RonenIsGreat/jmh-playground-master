@@ -78,7 +78,7 @@ public class SubStringsFinderBenchmark {
         }
     }
 
-    //@Benchmark
+    @Benchmark
     public void RabinKarpAlgorithmBenchmark() {
         char[] subString;
 
