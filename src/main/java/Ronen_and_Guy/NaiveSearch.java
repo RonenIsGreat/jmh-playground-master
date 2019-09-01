@@ -27,10 +27,8 @@ public class NaiveSearch {
         return -1;
     }
 
-    public static int findIndexOf(char[] text, char[] pattern)
+    public static int findIndexOf(String text, String pattern)
     {
-        String txt = new String(text);
-        String pat = new String(pattern);
-        return search(pat, txt);
+        return search(pattern, text);
     }
 }

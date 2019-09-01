@@ -69,11 +69,9 @@ public class Rabin_Karp {
         return -1;
     }
 
-    public static int findIndexOf(char[] text, char[] pattern)
+    public static int findIndexOf(String text, String pattern)
     {
-        String txt = new String(text);
-        String pat = new String(pattern);
         int q = 101; // A prime number
-        return search(pat, txt, q);
+        return search(pattern, text, q);
     }
 }

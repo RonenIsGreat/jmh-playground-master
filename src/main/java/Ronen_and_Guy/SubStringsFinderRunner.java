@@ -13,13 +13,13 @@ public class SubStringsFinderRunner {
 
     public static void main(String... args) throws RunnerException {
         Options opts = new OptionsBuilder()
-                .warmupIterations(3)
+                .warmupIterations(2)
                 .measurementIterations(3)
                 .forks(1)
-                //.addProfiler(GCProfiler.class)
-                //.addProfiler(StackProfiler.class)
+                .addProfiler(GCProfiler.class)
+                .addProfiler(StackProfiler.class)
                 .timeout(TimeValue.minutes(20))
-                .jvmArgs("-Xms2g", "-Xmx2g", "-Xmn800m", "-server")
+                .jvmArgs("-Xms4g", "-Xmx4g", "-Xmn800m", "-server")
                 .include(SubStringsFinderBenchmark.class.getSimpleName())
                 .build();
 
