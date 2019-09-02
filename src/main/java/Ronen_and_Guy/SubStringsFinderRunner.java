@@ -1,8 +1,6 @@
 package Ronen_and_Guy;
 
-import org.openjdk.jmh.profile.CompilerProfiler;
 import org.openjdk.jmh.profile.GCProfiler;
-import org.openjdk.jmh.profile.StackProfiler;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
@@ -16,8 +14,10 @@ public class SubStringsFinderRunner {
                 .warmupIterations(2)
                 .measurementIterations(3)
                 .forks(1)
+                //.addProfiler(HotspotMemoryProfiler.class)
+                //.addProfiler(StackProfiler.class)
                 .addProfiler(GCProfiler.class)
-                .addProfiler(StackProfiler.class)
+                .addProfiler(MaxMemoryProfiler.class)
                 .timeout(TimeValue.minutes(20))
                 .jvmArgs("-Xms4g", "-Xmx4g", "-Xmn800m", "-server")
                 .include(SubStringsFinderBenchmark.class.getSimpleName())

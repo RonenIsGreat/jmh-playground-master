@@ -38,7 +38,7 @@ public class SubStringsFinderBenchmark {
         }
     }
 
-    //@Benchmark
+    @Benchmark
     public void JavaAlgorithmBenchmark() {
         String myLongString = new String(this.longString);
         char[] subString;
@@ -53,7 +53,7 @@ public class SubStringsFinderBenchmark {
         }
     }
 
-    //@Benchmark
+    @Benchmark
     public void JavaWithThreadsAlgorithmBenchmark() {
         String myLongString = new String(this.longString);
         char[] subString;
