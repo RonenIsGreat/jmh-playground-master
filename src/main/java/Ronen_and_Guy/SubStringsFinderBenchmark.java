@@ -5,6 +5,8 @@ import org.openjdk.jmh.annotations.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @State(Scope.Benchmark)
 @BenchmarkMode(Mode.AverageTime)
@@ -79,7 +81,7 @@ public class SubStringsFinderBenchmark {
         }
     }
 
-    @Benchmark
+    //@Benchmark
     public void RabinKarpAlgorithmBenchmark() {
         final String text = new String(this.longString);
         char[] subString;
@@ -106,6 +108,51 @@ public class SubStringsFinderBenchmark {
                 int i = Rabin_Karp.findIndexOf(text, pattern);
 
                 if(i >= 0){
+                    // found the index of substring, at 'i'
+                }
+            });
+        }
+
+        // Wait for tasks to finish
+        pool.shutdown();
+        try {
+            pool.awaitTermination(20, TimeUnit.MINUTES);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Benchmark
+    public void RegexAlgorithmBenchmark() {
+        String myLongString = new String(this.longString);
+        char[] subString;
+
+        while ((subString = this.iterator.next()) != null){
+            final String mySubString = new String(subString);
+            Pattern pattern = Pattern.compile(mySubString);
+            Matcher matcher = pattern.matcher(myLongString);
+
+            if(matcher.find()){
+                int i = matcher.start();
+                // found the index of substring, at 'i'
+            }
+        }
+    }
+
+    @Benchmark
+    public void RegexWithThreadsAlgorithmBenchmark() {
+        String myLongString = new String(this.longString);
+        char[] subString;
+
+        while ((subString = this.iterator.next()) != null){
+            final String mySubString = new String(subString);
+
+            pool.execute(()->{
+                final Pattern pattern = Pattern.compile(mySubString);
+                final Matcher matcher = pattern.matcher(myLongString);
+
+                if(matcher.find()){
+                    int i = matcher.start();
                     // found the index of substring, at 'i'
                 }
             });
