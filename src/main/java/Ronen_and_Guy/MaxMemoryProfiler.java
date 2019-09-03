@@ -28,10 +28,9 @@ public class MaxMemoryProfiler implements InternalProfiler {
                                                        IterationResult result) {
 
         final long usedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-        //long totalHeap = Runtime.getRuntime().totalMemory();
 
         Collection<ScalarResult> results = new ArrayList<>();
-        results.add(new ScalarResult("Max used memory", usedMem, "bytes", AggregationPolicy.MAX));
+        results.add(new ScalarResult("Average max used memory", usedMem, "bytes", AggregationPolicy.AVG));
 
         return results;
     }
