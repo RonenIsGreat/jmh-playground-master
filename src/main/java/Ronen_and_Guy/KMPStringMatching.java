@@ -77,6 +77,7 @@ public class KMPStringMatching {
     // Driver program to test above function
     public static void main(String args[])
     {
+        System.out.println("testing");
         String txt = "ABABDABACDABABCABAB";
         String pat = "ABABCABAB";
         new KMPStringMatching().KMPSearch(pat, txt);
