@@ -11,11 +11,11 @@ import org.openjdk.jmh.results.ScalarResult;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class MaxMemoryProfiler implements InternalProfiler {
+public class UsedMemoryProfiler implements InternalProfiler {
 
     @Override
     public String getDescription() {
-        return "Max memory heap profiler";
+        return "Used memory heap profiler";
     }
 
     @Override
@@ -30,7 +30,9 @@ public class MaxMemoryProfiler implements InternalProfiler {
         final long usedMem = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
 
         Collection<ScalarResult> results = new ArrayList<>();
-        results.add(new ScalarResult("Average max used memory", usedMem, "bytes", AggregationPolicy.AVG));
+        results.add(new ScalarResult("Minimum used memory", usedMem, "bytes", AggregationPolicy.MIN));
+        results.add(new ScalarResult("Average used memory", usedMem, "bytes", AggregationPolicy.AVG));
+        results.add(new ScalarResult("Maximum used memory", usedMem, "bytes", AggregationPolicy.MAX));
 
         return results;
     }
