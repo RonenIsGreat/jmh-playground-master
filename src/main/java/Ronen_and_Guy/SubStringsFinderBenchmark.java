@@ -169,7 +169,7 @@ public class SubStringsFinderBenchmark {
         }
     }
 
-    @Benchmark
+    //@Benchmark
     public void RegexFindAllAtOnceAlgorithmBenchmark() {
         final String myLongString = new String(this.longString);
         StringBuilder patternBuilder = new StringBuilder();
@@ -178,11 +178,10 @@ public class SubStringsFinderBenchmark {
 
         // Build the pattern for all the sub-Strings
         while ((subString = this.iterator.next()) != null) {
-            if(first){
+            if (first)
                 first = false;
-            } else{
+            else
                 patternBuilder.append('|');
-            }
 
             patternBuilder.append(subString);
         }
