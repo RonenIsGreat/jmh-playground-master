@@ -81,10 +81,10 @@ public class SubStringsFinderBenchmark {
 
     @Benchmark
     public void RabinKarpAlgorithmBenchmark() {
+        final String text = new String(this.longString);
         char[] subString;
 
         while ((subString = iterator.next()) != null){
-            final String text = new String(this.longString);
             final String pattern = new String(subString);
             int i = Rabin_Karp.findIndexOf(text, pattern);
 
@@ -96,10 +96,10 @@ public class SubStringsFinderBenchmark {
 
     @Benchmark
     public void RabinKarpWithThreadsAlgorithmBenchmark() {
+        final String text = new String(this.longString);
         char[] subString;
 
         while ((subString = iterator.next()) != null){
-            final String text = new String(this.longString);
             final String pattern = new String(subString);
 
             pool.execute(()->{
