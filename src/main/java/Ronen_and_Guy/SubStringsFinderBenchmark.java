@@ -2,6 +2,8 @@ package Ronen_and_Guy;
 
 import org.openjdk.jmh.annotations.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -27,12 +29,12 @@ public class SubStringsFinderBenchmark {
     // this takes a lot of time...
     //@Benchmark
     public void NaiveAlgorithmBenchmark() {
+        final String text = new String(this.longString);
         char[] subString;
 
         while ((subString = iterator.next()) != null){
-            final String text = new String(this.longString);
             final String pattern = new String(subString);
-            int i = NaiveSearch.findIndexOf(text, pattern);
+            final int i = NaiveSearch.findIndexOf(text, pattern);
 
             if(i >= 0){
                 // found the index of substring, at 'i'
@@ -42,12 +44,12 @@ public class SubStringsFinderBenchmark {
 
     @Benchmark
     public void JavaAlgorithmBenchmark() {
-        String myLongString = new String(this.longString);
+        final String myLongString = new String(this.longString);
         char[] subString;
 
         while ((subString = this.iterator.next()) != null){
             final String mySubString = new String(subString);
-            int i = myLongString.indexOf(mySubString);
+            final int i = myLongString.indexOf(mySubString);
 
             if(i >= 0){
                 // found the index of substring, at 'i'
@@ -57,14 +59,14 @@ public class SubStringsFinderBenchmark {
 
     @Benchmark
     public void JavaWithThreadsAlgorithmBenchmark() {
-        String myLongString = new String(this.longString);
+        final String myLongString = new String(this.longString);
         char[] subString;
 
         while ((subString = this.iterator.next()) != null){
             final String mySubString = new String(subString);
 
             pool.execute(()->{
-                int i = myLongString.indexOf(mySubString);
+                final int i = myLongString.indexOf(mySubString);
 
                 if(i >= 0){
                     // found the index of substring, at 'i'
@@ -88,7 +90,7 @@ public class SubStringsFinderBenchmark {
 
         while ((subString = iterator.next()) != null){
             final String pattern = new String(subString);
-            int i = Rabin_Karp.findIndexOf(text, pattern);
+            final int i = Rabin_Karp.findIndexOf(text, pattern);
 
             if(i >= 0){
                 // found the index of substring, at 'i'
@@ -105,7 +107,7 @@ public class SubStringsFinderBenchmark {
             final String pattern = new String(subString);
 
             pool.execute(()->{
-                int i = Rabin_Karp.findIndexOf(text, pattern);
+                final int i = Rabin_Karp.findIndexOf(text, pattern);
 
                 if(i >= 0){
                     // found the index of substring, at 'i'
@@ -124,16 +126,16 @@ public class SubStringsFinderBenchmark {
 
     @Benchmark
     public void RegexAlgorithmBenchmark() {
-        String myLongString = new String(this.longString);
+        final String myLongString = new String(this.longString);
         char[] subString;
 
         while ((subString = this.iterator.next()) != null){
             final String mySubString = new String(subString);
-            Pattern pattern = Pattern.compile(mySubString);
-            Matcher matcher = pattern.matcher(myLongString);
+            final Pattern pattern = Pattern.compile(mySubString);
+            final Matcher matcher = pattern.matcher(myLongString);
 
             if(matcher.find()){
-                int i = matcher.start();
+                final int i = matcher.start();
                 // found the index of substring, at 'i'
             }
         }
@@ -141,7 +143,7 @@ public class SubStringsFinderBenchmark {
 
     @Benchmark
     public void RegexWithThreadsAlgorithmBenchmark() {
-        String myLongString = new String(this.longString);
+        final String myLongString = new String(this.longString);
         char[] subString;
 
         while ((subString = this.iterator.next()) != null){
@@ -152,7 +154,7 @@ public class SubStringsFinderBenchmark {
                 final Matcher matcher = pattern.matcher(myLongString);
 
                 if(matcher.find()){
-                    int i = matcher.start();
+                    final int i = matcher.start();
                     // found the index of substring, at 'i'
                 }
             });
@@ -164,6 +166,35 @@ public class SubStringsFinderBenchmark {
             pool.awaitTermination(20, TimeUnit.MINUTES);
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Benchmark
+    public void RegexFindAllAtOnceAlgorithmBenchmark() {
+        final String myLongString = new String(this.longString);
+        StringBuilder patternBuilder = new StringBuilder();
+        boolean first = true;
+        char[] subString;
+
+        // Build the pattern for all the sub-Strings
+        while ((subString = this.iterator.next()) != null) {
+            if(first){
+                first = false;
+            } else{
+                patternBuilder.append('|');
+            }
+
+            patternBuilder.append(subString);
+        }
+
+        final Pattern pattern = Pattern.compile(patternBuilder.toString());
+        final Matcher matcher = pattern.matcher(myLongString);
+
+        // find all the sub-Strings at once
+        while(matcher.find())
+        {
+            final int i = matcher.start();
+            // found the index of substring, at 'i'
         }
     }
 }
