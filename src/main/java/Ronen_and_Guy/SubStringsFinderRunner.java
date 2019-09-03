@@ -11,15 +11,15 @@ public class SubStringsFinderRunner {
 
     public static void main(String... args) throws RunnerException {
         Options opts = new OptionsBuilder()
-                .warmupIterations(2)
-                .measurementIterations(3)
+                .warmupIterations(0)
+                .measurementIterations(1)
                 .forks(1)
                 //.addProfiler(HotspotMemoryProfiler.class)
                 //.addProfiler(StackProfiler.class)
-                .addProfiler(GCProfiler.class)
+                //.addProfiler(GCProfiler.class)
                 .addProfiler(MaxMemoryProfiler.class)
                 .timeout(TimeValue.minutes(20))
-                .jvmArgs("-Xms4g", "-Xmx4g", "-Xmn800m", "-server")
+                .jvmArgs("-Xms1g", "-Xmx8g", "-Xmn800m", "-server")
                 .include(SubStringsFinderBenchmark.class.getSimpleName())
                 .build();
 
