@@ -41,7 +41,7 @@ public class SubStringsFinderBenchmark {
             }
         }
     }
-
+/*
     @Benchmark
     public void JavaAlgorithmBenchmark() {
         final String myLongString = new String(this.longString);
@@ -194,6 +194,21 @@ public class SubStringsFinderBenchmark {
         {
             final int i = matcher.start();
             // found the index of substring, at 'i'
+        }
+    }
+*/
+    @Benchmark
+    public void KMPAlgorithm() {
+        final String text = new String(this.longString);
+        char[] subString;
+
+        while ((subString = iterator.next()) != null){
+            final String pattern = new String(subString);
+            final int i = KMPStringMatching.KMPSearch(pattern, text);
+
+            if(i >= 0){
+                // found the index of substring, at 'i'
+            }
         }
     }
 }

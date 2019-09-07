@@ -3,6 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="89d4dfc1-65b4-46b1-a700-fb1d55f60553" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GiantFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/GiantFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SubStringsFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SubStringsFile.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/KMPStringMatching.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/KMPStringMatching.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/SubStringsFinderBenchmark.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/SubStringsFinderBenchmark.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/BenchmarkList" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/BenchmarkList" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/CompilerHints" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/CompilerHints" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +58,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.KMPStringMatching">
+  <component name="RunManager" selected="Application.SubStringsFinderRunner">
     <configuration name="GiantTextFileCreator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Ronen_and_Guy.GiantTextFileCreator" />
       <module name="playground" />
@@ -113,8 +119,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.KMPStringMatching" />
         <item itemvalue="Application.SubStringsFinderRunner" />
+        <item itemvalue="Application.KMPStringMatching" />
         <item itemvalue="Application.SubStringsFileCreator" />
         <item itemvalue="Application.GiantTextFileCreator" />
       </list>
@@ -176,7 +182,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

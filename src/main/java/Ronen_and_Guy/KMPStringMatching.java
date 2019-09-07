@@ -2,7 +2,7 @@ package Ronen_and_Guy;
 
 public class KMPStringMatching {
 
-    void KMPSearch(String pat, String txt)
+    public static int KMPSearch(String pat, String txt)
     {
         int M = pat.length();
         int N = txt.length();
@@ -23,9 +23,10 @@ public class KMPStringMatching {
                 i++;
             }
             if (j == M) {
-                System.out.println("Found pattern "
-                        + "at index " + (i - j));
+                //System.out.println("Found pattern "
+                //        + "at index " + (i - j));
                 j = lps[j - 1];
+                return i-j;
             }
 
             // mismatch after j matches
@@ -38,9 +39,10 @@ public class KMPStringMatching {
                     i = i + 1;
             }
         }
+        return -1;
     }
 
-    void computeLPSArray(String pat, int M, int lps[])
+    private static void computeLPSArray(String pat, int M, int lps[])
     {
         // length of the previous longest prefix suffix
         int len = 0;
@@ -73,7 +75,7 @@ public class KMPStringMatching {
             }
         }
     }
-
+/*
     // Driver program to test above function
     public static void main(String args[])
     {
@@ -82,4 +84,6 @@ public class KMPStringMatching {
         String pat = "ABABCABAB";
         new KMPStringMatching().KMPSearch(pat, txt);
     }
+    */
+
 }
