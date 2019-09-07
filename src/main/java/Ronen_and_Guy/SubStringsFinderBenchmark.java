@@ -25,7 +25,7 @@ public class SubStringsFinderBenchmark {
         iterator = new SubStringsFileCreator.SubStringsIterator();
         pool = Executors.newCachedThreadPool();
     }
-
+    /*
     // this takes a lot of time...
     //@Benchmark
     public void NaiveAlgorithmBenchmark() {
@@ -41,7 +41,7 @@ public class SubStringsFinderBenchmark {
             }
         }
     }
-/*
+
     @Benchmark
     public void JavaAlgorithmBenchmark() {
         final String myLongString = new String(this.longString);
@@ -131,7 +131,7 @@ public class SubStringsFinderBenchmark {
 
         while ((subString = this.iterator.next()) != null){
             final String mySubString = new String(subString);
-            final Pattern pattern = Pattern.compile(mySubString);
+            final Pattern pattern = Pattern.com`pile(mySubString);
             final Matcher matcher = pattern.matcher(myLongString);
 
             if(matcher.find()){
@@ -211,7 +211,7 @@ public class SubStringsFinderBenchmark {
             }
         }
     }
-*/
+
     @Benchmark
     public void KMPAlgorithmWithThreads() {
         final String text = new String(this.longString);
@@ -239,7 +239,7 @@ public class SubStringsFinderBenchmark {
         }
 
     @Benchmark
-    public void ImprovedKMPAlgorithmWithThreads() {
+    public void ImprovedMemoryKMPAlgorithmWithThreads() {
         final String text = new String(this.longString);
         char[] subString;
 
@@ -247,7 +247,7 @@ public class SubStringsFinderBenchmark {
             final String pattern = new String(subString);
             //Threads Splitting.
             pool.execute(()->{
-                final int i = KMPStringMatching.KMPSearchImproved(pattern, text);
+                final int i = KMPStringMatching.KMPSearchImprovedMemory(pattern, text);
 
                 if(i >= 0){
                     // found the index of substring, at 'i'
@@ -263,4 +263,33 @@ public class SubStringsFinderBenchmark {
             e.printStackTrace();
         }
     }
+*/
+    @Benchmark
+    public void ImprovedRunTimeKMPAlgorithmWithThreads() {
+        final String text = new String(this.longString);
+        char[] subString;
+
+        while ((subString = this.iterator.next()) != null){
+            final String pattern = new String(subString);
+
+
+
+
+            //Threads Splitting.
+            pool.execute(()->{
+                final int i = KMPStringMatching.KMPSearchImprovedRunTime(pattern, text);
+                if(i >= 0){
+                    // found the index of substring, at 'i'
+                }
+            });
+        }
+
+        // Wait for tasks to finish, if not finished within 20 minutes we terminate the operation.
+        pool.shutdown();
+        try {
+            pool.awaitTermination(20, TimeUnit.MINUTES);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
+}
