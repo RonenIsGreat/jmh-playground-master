@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89d4dfc1-65b4-46b1-a700-fb1d55f60553" name="Default Changelist" comment="">
+    <list default="true" id="89d4dfc1-65b4-46b1-a700-fb1d55f60553" name="Default Changelist" comment="Changed the">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/KMPStringMatching.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/KMPStringMatching.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/SubStringsFinderBenchmark.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/SubStringsFinderBenchmark.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/SubStringsFinderRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/SubStringsFinderRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/META-INF/BenchmarkList" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/BenchmarkList" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/META-INF/CompilerHints" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/CompilerHints" afterDir="false" />
     </list>
@@ -28,6 +27,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="1QNjeSThSgj31SwFkeNwQnESuz2" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -43,7 +49,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.runner" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -165,7 +171,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567863110998</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="created the improved KMPAlgorithm, still need to improve.&#10;and article that discuss improving the KMP algorithm:&#10;http://par.cse.nsysu.edu.tw/~algo/paper/paper11/A2_2.pdf">
+      <created>1567865850448</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1567865850448</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -200,6 +213,7 @@
     <MESSAGE value="Created the KMPStringMatching Class." />
     <MESSAGE value="Fixed an issue with the KMPStringSearch algorithm" />
     <MESSAGE value="Implemented the KMP Algorithm in the substringfinderrunner for concentrated benchmarks checkups." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented the KMP Algorithm in the substringfinderrunner for concentrated benchmarks checkups." />
+    <MESSAGE value="created the improved KMPAlgorithm, still need to improve.&#10;and article that discuss improving the KMP algorithm:&#10;http://par.cse.nsysu.edu.tw/~algo/paper/paper11/A2_2.pdf" />
+    <option name="LAST_COMMIT_MESSAGE" value="created the improved KMPAlgorithm, still need to improve.&#10;and article that discuss improving the KMP algorithm:&#10;http://par.cse.nsysu.edu.tw/~algo/paper/paper11/A2_2.pdf" />
   </component>
 </project>
