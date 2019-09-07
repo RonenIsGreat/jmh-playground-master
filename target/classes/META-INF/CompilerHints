@@ -3,5 +3,6 @@ dontinline,*.*_avgt_jmhStub
 dontinline,*.*_sample_jmhStub
 dontinline,*.*_ss_jmhStub
 dontinline,*.*_thrpt_jmhStub
-inline,Ronen_and_Guy/SubStringsFinderBenchmark.KMPAlgorithm
+inline,Ronen_and_Guy/SubStringsFinderBenchmark.ImprovedKMPAlgorithmWithThreads
+inline,Ronen_and_Guy/SubStringsFinderBenchmark.KMPAlgorithmWithThreads
 inline,Ronen_and_Guy/SubStringsFinderBenchmark.setup

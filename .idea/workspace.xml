@@ -3,10 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="89d4dfc1-65b4-46b1-a700-fb1d55f60553" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GiantFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/GiantFile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SubStringsFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SubStringsFile.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/KMPStringMatching.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/KMPStringMatching.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/SubStringsFinderBenchmark.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/SubStringsFinderBenchmark.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/SubStringsFinderRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/SubStringsFinderRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/META-INF/BenchmarkList" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/BenchmarkList" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/META-INF/CompilerHints" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/CompilerHints" afterDir="false" />
     </list>
@@ -159,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567530781830</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Implemented the KMP Algorithm in the substringfinderrunner for concentrated benchmarks checkups.">
+      <created>1567863110998</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1567863110998</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -193,6 +199,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created the KMPStringMatching Class." />
     <MESSAGE value="Fixed an issue with the KMPStringSearch algorithm" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed an issue with the KMPStringSearch algorithm" />
+    <MESSAGE value="Implemented the KMP Algorithm in the substringfinderrunner for concentrated benchmarks checkups." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented the KMP Algorithm in the substringfinderrunner for concentrated benchmarks checkups." />
   </component>
 </project>

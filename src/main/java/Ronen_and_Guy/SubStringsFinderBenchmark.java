@@ -196,7 +196,7 @@ public class SubStringsFinderBenchmark {
             // found the index of substring, at 'i'
         }
     }
-*/
+
     @Benchmark
     public void KMPAlgorithm() {
         final String text = new String(this.longString);
@@ -211,4 +211,56 @@ public class SubStringsFinderBenchmark {
             }
         }
     }
-}
+*/
+    @Benchmark
+    public void KMPAlgorithmWithThreads() {
+        final String text = new String(this.longString);
+        char[] subString;
+
+            while ((subString = this.iterator.next()) != null){
+                final String pattern = new String(subString);
+                //Threads Splitting.
+                pool.execute(()->{
+                    final int i = KMPStringMatching.KMPSearch(pattern, text);
+
+                    if(i >= 0){
+                        // found the index of substring, at 'i'
+                    }
+                });
+            }
+
+            // Wait for tasks to finish, if not finished within 20 minutes we terminate the operation.
+            pool.shutdown();
+            try {
+                pool.awaitTermination(20, TimeUnit.MINUTES);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+    @Benchmark
+    public void ImprovedKMPAlgorithmWithThreads() {
+        final String text = new String(this.longString);
+        char[] subString;
+
+        while ((subString = this.iterator.next()) != null){
+            final String pattern = new String(subString);
+            //Threads Splitting.
+            pool.execute(()->{
+                final int i = KMPStringMatching.KMPSearchImproved(pattern, text);
+
+                if(i >= 0){
+                    // found the index of substring, at 'i'
+                }
+            });
+        }
+
+        // Wait for tasks to finish, if not finished within 20 minutes we terminate the operation.
+        pool.shutdown();
+        try {
+            pool.awaitTermination(20, TimeUnit.MINUTES);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    }

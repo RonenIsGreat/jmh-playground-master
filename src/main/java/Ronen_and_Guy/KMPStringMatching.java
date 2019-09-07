@@ -42,6 +42,7 @@ public class KMPStringMatching {
         return -1;
     }
 
+    // the Pre=Processing algorithm to find the LPS (Longest Prefix Suffix).
     private static void computeLPSArray(String pat, int M, int lps[])
     {
         // length of the previous longest prefix suffix
@@ -63,9 +64,6 @@ public class KMPStringMatching {
                 // to search step.
                 if (len != 0) {
                     len = lps[len - 1];
-
-                    // Also, note that we do not increment
-                    // i here
                 }
                 else // if (len == 0)
                 {
@@ -75,6 +73,7 @@ public class KMPStringMatching {
             }
         }
     }
+
 /*
     // Driver program to test above function
     public static void main(String args[])
@@ -85,5 +84,46 @@ public class KMPStringMatching {
         new KMPStringMatching().KMPSearch(pat, txt);
     }
     */
+
+    //Editing the original algorithm to get better results.
+    public static int KMPSearchImproved(String pat, String txt)
+    {
+        // instead of creating variables that will hold the length of the strings, we
+        // will use the list's implemented variable to retrieve the length of the string.
+        // int M = pat.length();
+        // int N = txt.length();
+
+        // create lps[] that will hold the longest
+        // prefix suffix values for pattern
+        int lps[] = new int[pat.length()];
+        int j = 0; // index for pat[]
+        // Preprocess the pattern (calculate lps[]
+        // array)
+        computeLPSArray(pat, pat.length(), lps);
+
+        int i = 0; // index for txt[]
+        while (i < txt.length()) {
+            if (pat.charAt(j) == txt.charAt(i)) {
+                j++;
+                i++;
+            }
+            if (j == pat.length()) {
+                //System.out.println("Found pattern "
+                //        + "at index " + (i - j));
+                j = lps[j - 1];
+                return i-j;
+            }
+            // mismatch after j matches
+            else if (i < txt.length() && pat.charAt(j) != txt.charAt(i)) {
+                // Do not match lps[0..lps[j-1]] characters,
+                // they will match anyway
+                if (j != 0)
+                    j = lps[j - 1];
+                else
+                    i = i + 1;
+            }
+        }
+        return -1;
+    }
 
 }

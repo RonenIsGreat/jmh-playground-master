@@ -11,7 +11,7 @@ public class SubStringsFinderRunner {
     public static void main(String... args) throws RunnerException {
         Options opts = new OptionsBuilder()
                 .warmupIterations(0)
-                .measurementIterations(2)
+                .measurementIterations(1)
                 .forks(1)
                 //.addProfiler(HotspotMemoryProfiler.class)
                 //.addProfiler(StackProfiler.class)
