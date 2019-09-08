@@ -3,12 +3,10 @@ package Ronen_and_Guy;
 import org.openjdk.jmh.annotations.*;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Stack;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @State(Scope.Benchmark)
 @BenchmarkMode(Mode.AverageTime)
@@ -123,7 +121,7 @@ public class SubStringsFinderBenchmark {
             e.printStackTrace();
         }
     }
-
+/*
     @Benchmark
     public void RegexAlgorithmBenchmark() {
         final String myLongString = new String(this.longString);
@@ -245,7 +243,7 @@ public class SubStringsFinderBenchmark {
             e.printStackTrace();
         }
     }
-
+*/
     //@Benchmark
     public void KMPAlgorithm() {
         final String text = new String(this.longString);
@@ -313,23 +311,22 @@ public class SubStringsFinderBenchmark {
         }
     }
 
+
     @Benchmark
     public void ImprovedRunTimeKMPAlgorithmWithThreads() {
         final String text = new String(this.longString);
-        char[] subString;
+        char[] subString;;
 
-        while ((subString = this.iterator.next()) != null){
-            final String pattern = new String(subString);
+        Stack<String> arrStr = new Stack<>();
 
+        while ((subString = this.iterator.next()) != null) {
+            arrStr.push((subString.toString()));
+        }
 
-
-
+        for (int r = 0; r < arrStr.size() ; r++) {
             //Threads Splitting.
             pool.execute(()->{
-                final int i = KMPStringMatching.KMPSearchImprovedRunTime(pattern, text);
-                if(i >= 0){
-                    // found the index of substring, at 'i'
-                }
+                final int i = KMPStringMatching.KMPSearchImprovedRunTime(arrStr.pop().toString(), text);
             });
         }
 
@@ -341,4 +338,7 @@ public class SubStringsFinderBenchmark {
             e.printStackTrace();
         }
     }
+
+
+
 }

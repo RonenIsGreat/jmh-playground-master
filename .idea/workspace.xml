@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89d4dfc1-65b4-46b1-a700-fb1d55f60553" name="Default Changelist" comment="Changed the">
+    <list default="true" id="89d4dfc1-65b4-46b1-a700-fb1d55f60553" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/KMPStringMatching.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/KMPStringMatching.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/SubStringsFinderBenchmark.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/SubStringsFinderBenchmark.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/SubStringsFinderRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Ronen_and_Guy/SubStringsFinderRunner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/META-INF/BenchmarkList" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/BenchmarkList" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/META-INF/CompilerHints" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/CompilerHints" afterDir="false" />
     </list>
@@ -43,13 +43,13 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560357189815" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="C:/Program Files/jprofiler11/bin/jprofiler.exe" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.runner" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -178,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567865850448</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Making the distinction between Run Time and Memory improvement.">
+      <created>1567873377454</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1567873377454</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -214,6 +221,7 @@
     <MESSAGE value="Fixed an issue with the KMPStringSearch algorithm" />
     <MESSAGE value="Implemented the KMP Algorithm in the substringfinderrunner for concentrated benchmarks checkups." />
     <MESSAGE value="created the improved KMPAlgorithm, still need to improve.&#10;and article that discuss improving the KMP algorithm:&#10;http://par.cse.nsysu.edu.tw/~algo/paper/paper11/A2_2.pdf" />
-    <option name="LAST_COMMIT_MESSAGE" value="created the improved KMPAlgorithm, still need to improve.&#10;and article that discuss improving the KMP algorithm:&#10;http://par.cse.nsysu.edu.tw/~algo/paper/paper11/A2_2.pdf" />
+    <MESSAGE value="Making the distinction between Run Time and Memory improvement." />
+    <option name="LAST_COMMIT_MESSAGE" value="Making the distinction between Run Time and Memory improvement." />
   </component>
 </project>

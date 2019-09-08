@@ -3,5 +3,10 @@ dontinline,*.*_avgt_jmhStub
 dontinline,*.*_sample_jmhStub
 dontinline,*.*_ss_jmhStub
 dontinline,*.*_thrpt_jmhStub
+inline,Ronen_and_Guy/SubStringsFinderBenchmark.ImprovedMemoryKMPAlgorithmWithThreads
 inline,Ronen_and_Guy/SubStringsFinderBenchmark.ImprovedRunTimeKMPAlgorithmWithThreads
+inline,Ronen_and_Guy/SubStringsFinderBenchmark.JavaAlgorithmBenchmark
+inline,Ronen_and_Guy/SubStringsFinderBenchmark.JavaWithThreadsAlgorithmBenchmark
+inline,Ronen_and_Guy/SubStringsFinderBenchmark.KMPAlgorithmWithThreads
+inline,Ronen_and_Guy/SubStringsFinderBenchmark.RabinKarpWithThreadsAlgorithmBenchmark
 inline,Ronen_and_Guy/SubStringsFinderBenchmark.setup
