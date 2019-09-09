@@ -2,11 +2,12 @@ package Ronen_and_Guy;
 
 import org.openjdk.jmh.annotations.*;
 
-import java.util.ArrayList;
 import java.util.Stack;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @State(Scope.Benchmark)
 @BenchmarkMode(Mode.AverageTime)
@@ -81,7 +82,7 @@ public class SubStringsFinderBenchmark {
         }
     }
 
-    //@Benchmark
+    @Benchmark
     public void RabinKarpAlgorithmBenchmark() {
         final String text = new String(this.longString);
         char[] subString;
@@ -121,7 +122,7 @@ public class SubStringsFinderBenchmark {
             e.printStackTrace();
         }
     }
-/*
+
     @Benchmark
     public void RegexAlgorithmBenchmark() {
         final String myLongString = new String(this.longString);
@@ -243,8 +244,8 @@ public class SubStringsFinderBenchmark {
             e.printStackTrace();
         }
     }
-*/
-    //@Benchmark
+
+    @Benchmark
     public void KMPAlgorithm() {
         final String text = new String(this.longString);
         char[] subString;
@@ -264,26 +265,26 @@ public class SubStringsFinderBenchmark {
         final String text = new String(this.longString);
         char[] subString;
 
-            while ((subString = this.iterator.next()) != null){
-                final String pattern = new String(subString);
-                //Threads Splitting.
-                pool.execute(()->{
-                    final int i = KMPStringMatching.KMPSearch(pattern, text);
+        while ((subString = this.iterator.next()) != null){
+            final String pattern = new String(subString);
+            //Threads Splitting.
+            pool.execute(()->{
+                final int i = KMPStringMatching.KMPSearch(pattern, text);
 
-                    if(i >= 0){
-                        // found the index of substring, at 'i'
-                    }
-                });
-            }
-
-            // Wait for tasks to finish, if not finished within 20 minutes we terminate the operation.
-            pool.shutdown();
-            try {
-                pool.awaitTermination(20, TimeUnit.MINUTES);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+                if(i >= 0){
+                    // found the index of substring, at 'i'
+                }
+            });
         }
+
+        // Wait for tasks to finish, if not finished within 20 minutes we terminate the operation.
+        pool.shutdown();
+        try {
+            pool.awaitTermination(20, TimeUnit.MINUTES);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Benchmark
     public void ImprovedMemoryKMPAlgorithmWithThreads() {
@@ -311,8 +312,7 @@ public class SubStringsFinderBenchmark {
         }
     }
 
-
-    @Benchmark
+    //@Benchmark
     public void ImprovedRunTimeKMPAlgorithmWithThreads() {
         final String text = new String(this.longString);
         char[] subString;;
@@ -326,7 +326,7 @@ public class SubStringsFinderBenchmark {
         for (int r = 0; r < arrStr.size() ; r++) {
             //Threads Splitting.
             pool.execute(()->{
-                final int i = KMPStringMatching.KMPSearchImprovedRunTime(arrStr.pop().toString(), text);
+                final int i = KMPStringMatching.KMPSearchImprovedRunTime(arrStr.pop(), text);
             });
         }
 
@@ -338,7 +338,4 @@ public class SubStringsFinderBenchmark {
             e.printStackTrace();
         }
     }
-
-
-
 }

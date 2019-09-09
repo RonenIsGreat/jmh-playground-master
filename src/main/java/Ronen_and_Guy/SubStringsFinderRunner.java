@@ -8,9 +8,11 @@ import org.openjdk.jmh.runner.options.TimeValue;
 
 public class SubStringsFinderRunner {
 
+    // Ronen Rossin 206756280
+    // Guy Ohayon 301851713
     public static void main(String... args) throws RunnerException {
         Options opts = new OptionsBuilder()
-                .warmupIterations(2)
+                .warmupIterations(3)
                 .measurementIterations(5)
                 .forks(1)
                 //.addProfiler(HotspotMemoryProfiler.class)
