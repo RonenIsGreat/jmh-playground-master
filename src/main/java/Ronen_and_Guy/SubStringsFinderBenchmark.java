@@ -22,7 +22,7 @@ public class SubStringsFinderBenchmark {
     public void setup() {
         longString = GiantTextFileCreator.getLongStringFromFile();
         iterator = new SubStringsFileCreator.SubStringsIterator();
-        pool = Executors.newCachedThreadPool();
+        pool = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors()+1);
     }
 
     // this takes a lot of time...
